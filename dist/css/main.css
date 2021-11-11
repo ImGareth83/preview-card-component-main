@@ -1,0 +1,132 @@
+@charset "UTF-8";
+/* reset */
+*, *::before, *::after {
+  margin: 0;
+  padding: 0;
+  -webkit-box-sizing: border-box;
+          box-sizing: border-box;
+}
+
+/* Remove default margin */
+body, h1, h2, h3, h4, p, li, figure, figcaption, blockquote, dl, dd {
+  margin: 0;
+}
+
+/* layouts */
+/* _typography */
+@font-face {
+  font-family: "Lexend Deca",sans-serif;
+  font-weight: 400;
+  src: url("https://fonts.google.com/specimen/Lexend+Deca");
+}
+
+@font-face {
+  font-family: "Big Shoulders Display",cursive;
+  font-weight: 700;
+  src: url("https://fonts.google.com/specimen/Big+Shoulders+Display");
+}
+
+/* Set core root defaults */
+html {
+  font-size: 62.5%;
+}
+
+/* Set core body defaults */
+body {
+  background-color: #f2f2f2;
+  font-size: 1.5rem;
+  min-height: 100vh;
+  line-height: 1.5;
+  text-rendering: optimizeSpeed;
+}
+
+/* A elements that don't have a class get default styles */
+a:not([class]) {
+  text-decoration-skip-ink: auto;
+}
+
+/* Make images easier to work with */
+img, picture {
+  max-width: 100%;
+  display: block;
+}
+
+/* Inherit fonts for inputs and buttons */
+input, button, textarea, select {
+  font: inherit;
+}
+
+.container {
+  display: -ms-grid;
+  display: grid;
+  -ms-grid-columns: 1fr 1fr 1fr;
+      grid-template-columns: 1fr 1fr 1fr;
+  margin: 8rem auto;
+  width: 84rem;
+  font-family: "Lexend Deca";
+}
+
+.card {
+  display: -ms-grid;
+  display: grid;
+  grid-auto-rows: minmax(5rem, -webkit-max-content);
+  grid-auto-rows: minmax(5rem, max-content);
+  color: rgba(255, 255, 255, 0.75);
+  min-width: 28rem;
+  min-height: 45rem;
+  padding: 4rem;
+}
+
+.card h2 {
+  text-transform: uppercase;
+  font-family: "Big Shoulders Display";
+}
+
+.card__sedans {
+  background-color: #e38826;
+  border-top-left-radius: 1rem;
+  border-bottom-left-radius: 1rem;
+}
+
+.card__suvs {
+  background-color: #006970;
+  border-radius: 0;
+}
+
+.card__luxury {
+  background-color: #004241;
+  border-top-right-radius: 1rem;
+  border-bottom-right-radius: 1rem;
+}
+
+.card .btn {
+  color: black;
+  /* Schriftfarbe Button */
+  background-color: var(--text-color-light);
+  /* Hintergrundfarbe des Buttons */
+  font-size: 15px;
+  /* Schrift Größe im Button */
+  text-decoration: none;
+  /* das "none" gegebenenfalls ersetzen, falls gewünscht */
+  border-radius: 50px;
+  /* falls gewünscht wird hier die Border festgelegt */
+  padding: 10px 30px 10px 30px;
+  /* Größe des Buttons festlegen */
+  -webkit-transition: 0.3s ease;
+  transition: 0.3s ease;
+  /* <-- nur ein Beispiel | das ist Übergang bei zum Beispiel dem Hover Effect */
+  text-align: center;
+  /* Text mittig im Button platzieren */
+  position: absolute;
+  bottom: 0;
+}
+
+.attribution {
+  font-size: 1.1rem;
+  text-align: center;
+}
+
+.attribution a {
+  color: #3e52a3;
+}
+/*# sourceMappingURL=main.css.map */
