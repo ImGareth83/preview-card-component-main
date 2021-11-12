@@ -1,4 +1,3 @@
-@charset "UTF-8";
 /* reset */
 *, *::before, *::after {
   margin: 0;
@@ -69,8 +68,8 @@ input, button, textarea, select {
 .card {
   display: -ms-grid;
   display: grid;
-  grid-auto-rows: minmax(5rem, -webkit-max-content);
-  grid-auto-rows: minmax(5rem, max-content);
+  -ms-grid-rows: .5fr .5fr .5fr 1fr;
+      grid-template-rows: .5fr .5fr .5fr 1fr;
   color: rgba(255, 255, 255, 0.75);
   min-width: 28rem;
   min-height: 45rem;
@@ -99,26 +98,57 @@ input, button, textarea, select {
   border-bottom-right-radius: 1rem;
 }
 
-.card .btn {
-  color: black;
-  /* Schriftfarbe Button */
-  background-color: var(--text-color-light);
-  /* Hintergrundfarbe des Buttons */
-  font-size: 15px;
-  /* Schrift Größe im Button */
+.card .flex {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: reverse;
+      -ms-flex-direction: column-reverse;
+          flex-direction: column-reverse;
+  width: 14rem;
+}
+
+.card .flex .btn {
+  background-color: rgba(255, 255, 255, 0.75);
+  border-radius: 5rem;
+  font-size: 1.5rem;
+  height: 3em;
+  padding: 1rem 3rem 1rem 3rem;
   text-decoration: none;
-  /* das "none" gegebenenfalls ersetzen, falls gewünscht */
-  border-radius: 50px;
-  /* falls gewünscht wird hier die Border festgelegt */
-  padding: 10px 30px 10px 30px;
-  /* Größe des Buttons festlegen */
   -webkit-transition: 0.3s ease;
   transition: 0.3s ease;
-  /* <-- nur ein Beispiel | das ist Übergang bei zum Beispiel dem Hover Effect */
   text-align: center;
-  /* Text mittig im Button platzieren */
-  position: absolute;
-  bottom: 0;
+}
+
+.card .flex .btn__sedans {
+  color: #e38826;
+}
+
+.card .flex .btn__sedans:hover {
+  background-color: #e38826;
+  border: 2px solid rgba(255, 255, 255, 0.75);
+  color: rgba(255, 255, 255, 0.75);
+}
+
+.card .flex .btn__suvs {
+  color: #006970;
+}
+
+.card .flex .btn__suvs:hover {
+  background-color: #006970;
+  border: 2px solid rgba(255, 255, 255, 0.75);
+  color: rgba(255, 255, 255, 0.75);
+}
+
+.card .flex .btn__luxury {
+  color: #004241;
+}
+
+.card .flex .btn__luxury:hover {
+  background-color: #004241;
+  border: 2px solid rgba(255, 255, 255, 0.75);
+  color: rgba(255, 255, 255, 0.75);
 }
 
 .attribution {
