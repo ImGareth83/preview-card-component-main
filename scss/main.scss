@@ -11,8 +11,8 @@ body,h1,h2,h3,h4,p,li,figure,figcaption,blockquote,dl,dd {
 }
 
 /* layouts */
-$layout-breakpoint-mobile: 375px;
-$layout-breakpoint-desktop: 1440px;
+$breakpoint-mobile: 375px;
+$breakpoint-desktop: 1440px;
 
 /* _typography */
 $primary-bright-orange: hsl(31, 77%, 52%);
@@ -21,6 +21,41 @@ $primary-very-dark-cyan: hsl(179, 100%, 13%);
 
 $neutral-transparent-white: hsla(0, 0%, 100%, 0.75);
 $neutral-very-light-gray: hsl(0, 0%, 95%);
+
+
+@mixin animateButton($bgColor) {
+    @content;
+    border: 2px solid $neutral-transparent-white;
+    color: $neutral-transparent-white;
+    background-color: $bgColor;
+}
+
+//https://clubmate.fi/the-modern-way-of-writing-media-queries-with-the-help-of-sass
+//https://css-tricks.com/snippets/sass/px-to-em-functions/
+// Em conversion
+@function calculateEm($size) {
+    $emSize: ($size / 16px) * 1em;
+    @return $emSize;
+}
+
+//https://jdsteinbach.com/css/sass-maps-breakpoint-mixin/
+$breakpoints: (
+    very-small:320px,
+    small: 480px,
+    medium: 720px,
+    large: 960px,
+    wide: 1200px
+);
+
+@mixin breakpoint($size) {
+  @if not map-has-key($breakpoints, $size) {
+    @warn "Warning: `#{$size}` is not a valid breakpoint size.";
+  } @else {
+    @media screen and (min-width: calculateEm(map-get($breakpoints, $size))) {
+        @content;
+    }
+  }
+}
 
 @font-face {
     font-family: "Lexend Deca",sans-serif;
@@ -66,13 +101,33 @@ input,button,textarea,select {
 
 .container{
     display: grid;
-    grid-template-columns: 1fr 1fr 1fr;
-    margin: 8rem auto;
-    width: 84rem;
     font-family: "Lexend Deca";
+    margin: 8rem auto;
+
+    @include breakpoint(very-small){
+        grid-template-columns: 1fr;
+        width: 28rem;
+    }
+    @include breakpoint(small){
+        grid-template-columns: 1fr;
+        width: 28rem;
+    }
+    @include breakpoint(medium){
+        grid-template-columns: repeat(3,1fr);
+        width: 84rem;
+    }
+    @include breakpoint(large){        
+        grid-template-columns: repeat(3,1fr);
+        width: 84rem;
+    }
+    @include breakpoint(wide){
+        grid-template-columns: repeat(3,1fr);
+        width: 84rem;
+    }
+    
 }
 
-.card{
+.card{  
     display: grid;
     grid-template-rows: .5fr .5fr .5fr 1fr;
 
@@ -88,8 +143,6 @@ input,button,textarea,select {
 
     &__sedans{
         background-color: $primary-bright-orange;
-        border-top-left-radius: 1rem;
-        border-bottom-left-radius: 1rem;
     }
     &__suvs{
         background-color: $primary-dark-cyan;
@@ -98,8 +151,47 @@ input,button,textarea,select {
     }
     &__luxury{
         background-color: $primary-very-dark-cyan;
-        border-top-right-radius: 1rem;
-        border-bottom-right-radius: 1rem;
+    }
+
+    @include breakpoint(very-small){
+        &__sedans{
+            border-radius: 1rem 1rem 0 0;
+        }
+        &__luxury{
+            border-radius: 0 0 1rem 1rem;
+        }
+    }
+    @include breakpoint(small){
+        &__sedans{
+            border-radius: 1rem 1rem 0 0;
+        }
+        &__luxury{
+            border-radius: 0 0 1rem 1rem;
+        }
+    }
+    @include breakpoint(medium){
+        &__sedans{
+            border-radius: 1rem 0 0 1rem;
+        }
+        &__luxury{
+            border-radius: 0 1rem 1rem 0;
+        }
+    }
+    @include breakpoint(large){
+        &__sedans{
+            border-radius: 1rem 0 0 1rem;
+        }
+        &__luxury{
+            border-radius: 0 1rem 1rem 0;
+        }
+    }
+    @include breakpoint(wide){
+        &__sedans{
+            border-radius: 1rem 0 0 1rem;
+        }
+        &__luxury{
+            border-radius: 0 1rem 1rem 0;
+        }
     }
 
     .flex{
@@ -122,9 +214,7 @@ input,button,textarea,select {
                 color: $primary-bright-orange;
 
                 &:hover{
-                    background-color: $primary-bright-orange;
-                    border: 2px solid $neutral-transparent-white;
-                    color: $neutral-transparent-white;
+                    @include animateButton($primary-bright-orange);
                 }
             }
             &__suvs{
@@ -132,9 +222,7 @@ input,button,textarea,select {
                 color: $primary-dark-cyan;
 
                 &:hover{
-                    background-color: $primary-dark-cyan;
-                    border: 2px solid $neutral-transparent-white;
-                    color: $neutral-transparent-white;
+                    @include animateButton($primary-dark-cyan);
                 }
             }
             &__luxury{
@@ -142,9 +230,7 @@ input,button,textarea,select {
                 color: $primary-very-dark-cyan;
 
                 &:hover{
-                    background-color: $primary-very-dark-cyan;
-                    border: 2px solid $neutral-transparent-white;
-                    color: $neutral-transparent-white;
+                    @include animateButton($primary-very-dark-cyan);
                 }
             }
 
@@ -153,7 +239,6 @@ input,button,textarea,select {
     }
 
 }
-
 
 .attribution { 
     font-size: 1.1rem; text-align: center; 

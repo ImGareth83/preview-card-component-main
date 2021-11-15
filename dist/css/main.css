@@ -58,11 +58,48 @@ input, button, textarea, select {
 .container {
   display: -ms-grid;
   display: grid;
-  -ms-grid-columns: 1fr 1fr 1fr;
-      grid-template-columns: 1fr 1fr 1fr;
-  margin: 8rem auto;
-  width: 84rem;
   font-family: "Lexend Deca";
+  margin: 8rem auto;
+}
+
+@media screen and (min-width: 20em) {
+  .container {
+    -ms-grid-columns: 1fr;
+        grid-template-columns: 1fr;
+    width: 28rem;
+  }
+}
+
+@media screen and (min-width: 30em) {
+  .container {
+    -ms-grid-columns: 1fr;
+        grid-template-columns: 1fr;
+    width: 28rem;
+  }
+}
+
+@media screen and (min-width: 45em) {
+  .container {
+    -ms-grid-columns: (1fr)[3];
+        grid-template-columns: repeat(3, 1fr);
+    width: 84rem;
+  }
+}
+
+@media screen and (min-width: 60em) {
+  .container {
+    -ms-grid-columns: (1fr)[3];
+        grid-template-columns: repeat(3, 1fr);
+    width: 84rem;
+  }
+}
+
+@media screen and (min-width: 75em) {
+  .container {
+    -ms-grid-columns: (1fr)[3];
+        grid-template-columns: repeat(3, 1fr);
+    width: 84rem;
+  }
 }
 
 .card {
@@ -83,8 +120,6 @@ input, button, textarea, select {
 
 .card__sedans {
   background-color: #e38826;
-  border-top-left-radius: 1rem;
-  border-bottom-left-radius: 1rem;
 }
 
 .card__suvs {
@@ -94,8 +129,51 @@ input, button, textarea, select {
 
 .card__luxury {
   background-color: #004241;
-  border-top-right-radius: 1rem;
-  border-bottom-right-radius: 1rem;
+}
+
+@media screen and (min-width: 20em) {
+  .card__sedans {
+    border-radius: 1rem 1rem 0 0;
+  }
+  .card__luxury {
+    border-radius: 0 0 1rem 1rem;
+  }
+}
+
+@media screen and (min-width: 30em) {
+  .card__sedans {
+    border-radius: 1rem 1rem 0 0;
+  }
+  .card__luxury {
+    border-radius: 0 0 1rem 1rem;
+  }
+}
+
+@media screen and (min-width: 45em) {
+  .card__sedans {
+    border-radius: 1rem 0 0 1rem;
+  }
+  .card__luxury {
+    border-radius: 0 1rem 1rem 0;
+  }
+}
+
+@media screen and (min-width: 60em) {
+  .card__sedans {
+    border-radius: 1rem 0 0 1rem;
+  }
+  .card__luxury {
+    border-radius: 0 1rem 1rem 0;
+  }
+}
+
+@media screen and (min-width: 75em) {
+  .card__sedans {
+    border-radius: 1rem 0 0 1rem;
+  }
+  .card__luxury {
+    border-radius: 0 1rem 1rem 0;
+  }
 }
 
 .card .flex {
@@ -126,9 +204,9 @@ input, button, textarea, select {
 }
 
 .card .flex .btn__sedans:hover {
-  background-color: #e38826;
   border: 2px solid rgba(255, 255, 255, 0.75);
   color: rgba(255, 255, 255, 0.75);
+  background-color: #e38826;
 }
 
 .card .flex .btn__suvs {
@@ -136,9 +214,9 @@ input, button, textarea, select {
 }
 
 .card .flex .btn__suvs:hover {
-  background-color: #006970;
   border: 2px solid rgba(255, 255, 255, 0.75);
   color: rgba(255, 255, 255, 0.75);
+  background-color: #006970;
 }
 
 .card .flex .btn__luxury {
@@ -146,9 +224,9 @@ input, button, textarea, select {
 }
 
 .card .flex .btn__luxury:hover {
-  background-color: #004241;
   border: 2px solid rgba(255, 255, 255, 0.75);
   color: rgba(255, 255, 255, 0.75);
+  background-color: #004241;
 }
 
 .attribution {
